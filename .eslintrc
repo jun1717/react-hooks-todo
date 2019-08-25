@@ -1,0 +1,16 @@
+{
+	"extends": "airbnb",
+	"env": {
+		"es6": true,
+		"browser": true
+	},
+	"parserOptions": {
+		"ecmaVersion": 2018
+	},
+	"settings": {
+		"import/resolver": "webpack"
+	},
+	"rules": {
+		"react/prefer-stateless-function": 0
+	}
+}
