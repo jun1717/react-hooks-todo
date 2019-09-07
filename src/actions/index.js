@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions';
-import { TEST_ACTION } from './ActionTypes';
+import { ADD_TODO } from './ActionTypes';
 
-export const actionTest = createAction(TEST_ACTION);
+export const addTodo = createAction(ADD_TODO, text => text);
 
 export const test = () => { };
