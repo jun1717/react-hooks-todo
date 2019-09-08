@@ -1,2 +1,2 @@
-export const TEST_ACTION = 'TEST_ACTION';
-export const TEST_TEST = 'TEST_ACTION';
+export const ADD_TODO = 'ADD_TODO';
+export const DELETE_TODO = 'DELETE_TODO';
