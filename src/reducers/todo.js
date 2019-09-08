@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions';
-import { ADD_TODO } from '../actions/ActionTypes';
+import { ADD_TODO, DELETE_TODO } from '../actions/ActionTypes';
 
 const initialState = {
   todoList: [],
@@ -10,6 +10,13 @@ const todo = handleActions({
     ...state,
     todoList: [...state.todoList, action.payload.text],
   }),
+  [DELETE_TODO]: (state, action) => {
+    const list = state.todoList.filter((data, index) => index !== action.payload);
+    return ({
+      ...state,
+      todoList: list,
+    });
+  },
 }, initialState);
 
 export default todo;

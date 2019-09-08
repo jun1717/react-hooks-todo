@@ -7,19 +7,10 @@ import { bindActionCreators } from 'redux';
 
 const App = (props) => {
   const { todoList, actions } = props;
-  console.log(todoList, actions);
-  const [todo, setTodo] = useState([]);
   const [text, setText] = useState('');
-  // const addTodo = () => {
-  //   if (text === '') {
-  //     return;
-  //   }
-  //   setText('');
-  //   setTodo([...todo, text]);
-  // };
-  const deleteTodo = (idx) => {
-    const list = todo.filter((data, index) => index !== idx);
-    setTodo([list]);
+  const add = () => {
+    setText('');
+    actions.addTodo({ text });
   };
   return (
     <div>
@@ -27,12 +18,12 @@ const App = (props) => {
       <div>
         <input type="text" value={text} onChange={e => setText(e.target.value)} />
         <br />
-        <button type="button" onClick={() => actions.addTodo({ text })}>Add</button>
+        <button type="button" onClick={() => add()}>Add</button>
         <br />
-        {todo.map((data, index) => (
+        {todoList.map((data, index) => (
           <li key={Math.random()}>
             <span style={{ paddingRight: '5px' }}>{data}</span>
-            <button type="button" onClick={() => deleteTodo(index)}> delete</button>
+            <button type="button" onClick={() => actions.deleteTodo(index)}> delete</button>
           </li>
         ))}
       </div>
