@@ -1,5 +1,7 @@
 import React, { useState, useContext } from 'react';
 import Context from 'src/context/Context';
+import { ADD_TODO } from 'src/actions/ActionTypes';
+
 
 const styles = {
   inputTitle: {
@@ -15,11 +17,15 @@ const Form = () => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
 
-  const { state, setTodoList } = useContext(Context);
+  const { dispatch } = useContext(Context);
 
   const addTodo = () => {
-    const list = [...state, { key: Math.random(), title, body }];
-    setTodoList(list);
+    dispatch({
+      type: ADD_TODO,
+      title,
+      body,
+      key: Math.random(),
+    });
     setTitle('');
     setBody('');
   };

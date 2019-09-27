@@ -1,18 +1,21 @@
 import React, { useContext } from 'react';
 import Context from 'src/context/Context';
+import { DELETE_TODO } from 'src/actions/ActionTypes';
 
 
 const List = () => {
-  const { state, setTodoList } = useContext(Context);
+  const { state, dispatch } = useContext(Context);
   const deleteTodo = (key) => {
-    const newList = state.filter(data => data.key !== key);
-    setTodoList(newList);
+    dispatch({
+      type: DELETE_TODO,
+      key,
+    });
   };
   return (
-    state.map(data => (
+    state.todo.map(data => (
       <li key={data.key}>
         {data.title}
-        <button type="button" onClick={() => deleteTodo(data.key, state, setTodoList)}>削除</button>
+        <button type="button" onClick={() => deleteTodo(data.key)}>削除</button>
       </li>
     ))
   );
